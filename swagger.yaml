@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: Student Website
+  description: Best website for students cretated by : shivam singh
+  version: 3.0.0
+servers:
+  - url: http://localhost:3001
+    description: Local server
+  - url: http://another.server.com
+    description: Optional server description, e.g. Internal staging server for testing
+
+
+components:
+  securitySchemes:
+    BasicAuth:     # <-- arbitrary name for the security scheme
+      type: http
+      scheme: basic
+    BearerAuth: 
+      type: http
+      scheme: bearer
+
+paths: 
+  /getStudents:
+    get:
+      summary: Returns a list of users.
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
